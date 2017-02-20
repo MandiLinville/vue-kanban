@@ -5,7 +5,7 @@ let env = {
 	DBPROTOCOL: 'mongodb',
 	DBUSERNAME: 'colbyMandi',
 	DBPASSWORD: '123Password',
-	DBHOST: 'ds056979.mlab.com',
+	DBHOST: 'ds056979.mlab.com:56979',
 	DBNAME: 'codeworks',
 	SERVERNAME: 'dev-server'
 }
