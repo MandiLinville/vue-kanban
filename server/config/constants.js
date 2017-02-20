@@ -7,15 +7,34 @@ const actions = {
 }
 
 const models = {
-  dashboard: 'Dashboard',
-  board: 'Board',
-  list: 'List',
-  card: 'Card',
-  comment: 'Comment'
+  board: {
+    name: 'Board',
+    endpoint: 'boards'
+  },
+  dashboard: {
+    name: 'Dashboard',
+    endpoint: 'dashboards'
+  },
+  list: {
+    name: 'List',
+    endpoint: 'lists'
+  },
+  card: {
+    name: 'Card',
+    endpoint: 'cards'
+  },
+  comment: {
+    name: 'Comment',
+    endpoint: 'comments'
+  },
+  user: {
+    name: 'User',
+    endpoint: 'users',
+    preventDefaultApi: true,
+    useCustomRoutes: true
+  }
 }
-
-
-export  {
+export {
   actions,
   models
 }

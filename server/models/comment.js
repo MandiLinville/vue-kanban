@@ -11,4 +11,4 @@ var schema = new mongoose.Schema({
 	cardId: { type: ObjectId, ref: models.board, required: true }
 });
 
-module.exports = mongoose.model(models.comment, schema);
+module.exports = mongoose.model(models.comment.name, schema);

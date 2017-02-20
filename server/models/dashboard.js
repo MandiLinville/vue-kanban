@@ -11,4 +11,4 @@ let schema = new mongoose.Schema({
     boards: [{ type: ObjectId, ref: 'Board' }]
 })
 
-module.exports = mongoose.model(models.dashboard, schema);
+module.exports = mongoose.model(models.dashboard.name, schema);

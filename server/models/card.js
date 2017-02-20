@@ -12,4 +12,4 @@ var schema = new mongoose.Schema({
 	comments: { type: ObjectId, ref: 'Comment'}
 });
 
-module.exports = mongoose.model(models.card, schema);
+module.exports = mongoose.model(models.card.name, schema);

@@ -6,10 +6,10 @@ var schema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String },
   created: { type: Number, default: Date.now() },
-  	// Relations
+    	// Relations
   dashboardId: {type: ObjectId, ref: models.dashboard, required: true},
   lists: {type: ObjectId, ref: 'List'}
 });
 
 
-module.exports = mongoose.model(models.board, schema);
+module.exports = mongoose.model(models.board.name, schema);

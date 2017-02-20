@@ -12,4 +12,4 @@ var schema = new mongoose.Schema({
 	cards: {type: ObjectId, ref: 'Card'}
 });
 
-module.exports = mongoose.model(models.list, schema);
+module.exports = mongoose.model(models.list.name, schema);
