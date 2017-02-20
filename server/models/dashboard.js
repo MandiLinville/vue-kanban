@@ -1,9 +1,9 @@
 import { models } from '../config/constants'
 let mongoose = require('mongoose')
-let Schema = mongoose.Schema
-let ObjectId = Schema.Types.ObjectId
+// let Schema = mongoose.Schema
+let ObjectId = mongoose.Schema.ObjectId
 
-let dasboardSchema = new Schema({
+let schema = new mongoose.Schema({
     name: { type: String, required: true },
     description: { type: String },
     created: { type: Number, default: Date.now()},
@@ -11,4 +11,4 @@ let dasboardSchema = new Schema({
     boards: [{ type: ObjectId, ref: 'Board' }]
 })
 
-module.exports = mongoose.model(models.dashboardModel, schema);
+module.exports = mongoose.model(models.dashboard, schema);
