@@ -7,8 +7,11 @@ const actions = {
 }
 
 const models = {
+  dashboard: 'Dashboard',
   board: 'Board',
-  list: 'List'
+  list: 'List',
+  card: 'Card',
+  comment: 'Comment'
 }
 
 
