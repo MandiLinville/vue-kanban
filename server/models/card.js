@@ -8,8 +8,8 @@ var schema = new mongoose.Schema({
 	description: { type: String },
 	created: { type: Number, default: Date.now() },
 	// Relations
-	boardId: { type: ObjectId, ref: models.board, required: true },
-	cards: {type: ObjectId, ref: 'Card'}
+	listId: { type: ObjectId, ref: models.board, required: true },
+	comments: { type: ObjectId, ref: 'Comment'}
 });
 
-module.exports = mongoose.model(models.list, schema);
+module.exports = mongoose.model(models.card, schema);
