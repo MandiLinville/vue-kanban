@@ -1,4 +1,6 @@
 let Lists = require('../models/list')
+let Boards = require('../models/board')
+let Users = require('../models/user')
 
 export default {
   boardLists: {
@@ -21,7 +23,7 @@ export default {
         reqType: 'post',
         method(req, res, next){
             let action = "Invite your friends"
-             Users.find({email: req.body.email})
+             Users.findOne({email: req.body.email})
         .then(user => {
              Boards.findById(req.params.boardId)
              .then(board => {
@@ -33,7 +35,7 @@ export default {
                  })
              })
         }).catch(error => {
-          return next(handleResponse(action, null, error))
+          res.send(handleResponse(action, null, error))
         })
     }
   }
