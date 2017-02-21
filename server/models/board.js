@@ -6,8 +6,10 @@ var schema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String },
   created: { type: Number, default: Date.now() },
+  creatorId: {type: ObjectId, ref: models.user.name, required: true},
+  collaborators: [{type: ObjectId, ref: models.user.name}],
     	// Relations
-  dashboardId: {type: ObjectId, ref: models.dashboard, required: true},
+  
   lists: {type: ObjectId, ref: 'List'}
 });
 
