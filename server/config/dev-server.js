@@ -6,6 +6,7 @@ import { defaultErrorHandler, corsOptions } from './handlers'
 import api from '../models'
 import session from '../authentication/sessions'
 import Auth from '../authentication/auth'
+var app = express();
 var io = require('socket.io')(server);
 
 app.use(express.static(__dirname + '/www'));
