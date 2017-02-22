@@ -6,6 +6,21 @@ import { defaultErrorHandler, corsOptions } from './handlers'
 import api from '../models'
 import session from '../authentication/sessions'
 import Auth from '../authentication/auth'
+var io = require('socket.io')(server);
+
+app.use(express.static(__dirname + '/www'));
+
+
+io.on('connection', function (socket) {
+
+    socket.join('boardId', function () {
+        io.to('boardId').emit('message', 'A new user has joined the board.');
+    });
+
+    socket.on('message', function (data){
+        io.to('boardId').emit
+    })
+});
 
 // ENABLE ROUTES IF USING SERVER SIDE ROUTING
 // import routes from './routes'
