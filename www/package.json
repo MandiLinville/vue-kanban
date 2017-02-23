@@ -2,13 +2,15 @@
   "name": "vue-kanban-www",
   "version": "1.0.0",
   "description": "The web interface for vue-kanban",
-  "author": "Jake Overall <joverall22@gmail.com>",
+  "author": "Colby",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "test": "npm run unit"
+    "test": "npm run unit",
+    "start": "node index.js",
+    "debug": "node --debug index.js"
   },
   "dependencies": {
     "socket.io-client": "^1.7.3",

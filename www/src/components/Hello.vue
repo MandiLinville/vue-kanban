@@ -14,7 +14,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Kanban Web App'
+      msg: 'welcome to trello'
     }
   }
 }

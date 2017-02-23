@@ -12,53 +12,6 @@
   <!-- built files will be auto injected -->
 
 
-  <div class="container">
-    <form class="form-inline">
-      <div class="form-group">
-        <label for="exampleInputName2">Name</label>
-        <input type="text" class="form-control" id="chatMessage" placeholder="">
-      </div>
-      <button type="button" id="chatBtn" class="btn btn-success">Send</button>
-    </form>
-    <div class="messages">
-      <ul id="messages"></ul>
-    </div>
-  </div>
-
-
-  <script src="/socket.io/socket.io.js"></script>
-
-
-  <script>
-    var client = io.connect('http://localhost:3000');
-    var chatMessage = document.getElementById('chatMessage');
-    var chatBtn = document.getElementById('chatBtn');
-    var messages = document.getElementById('messages');
-
-    chatBtn.addEventListener('click', function () {
-      client.emit('message', {
-        name: 'Colby',
-        text: chatMessage.value
-      });
-    });
-
-    client.on('message', function (data) {
-
-      console.log(data);
-
-      if (data.name && data.text) {
-        // append the data to a list in the html
-        var item = document.createElement('li');
-
-        item.innerHTML = `<strong>${data.name}</strong> ${data.text}`;
-
-        messages.appendChild(item);
-      }
-    });
-
-    // add a button event listener to emit text from an input box
-    client.emit('message', 'Test message.');
-  </script>
 </body>
 
 </html>
