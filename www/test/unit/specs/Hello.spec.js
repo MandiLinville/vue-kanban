@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import Hello from 'src/components/Hello'
+import Boards from 'src/components/Boards'
 
-describe('Hello.vue', () => {
+describe('Boards.vue', () => {
   it('should render correct contents', () => {
-    const Constructor = Vue.extend(Hello)
+    const Constructor = Vue.extend(Boards)
     const vm = new Constructor().$mount()
-    expect(vm.$el.querySelector('.hello h1').textContent)
+    expect(vm.$el.querySelector('.boards h1').textContent)
       .to.equal('Welcome to Your Vue.js App')
   })
 })
