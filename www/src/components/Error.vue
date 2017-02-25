@@ -1,6 +1,6 @@
 <template>
   <div> 
-    Error: {{error}}
+    <!--Error: {{error}}-->
   </div>
 </template>
 

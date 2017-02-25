@@ -1,9 +1,9 @@
 <template>
 
   <div> 
-    <form @subit.prevent="createBoard">
-    <input placeholder="TITLE">
-    <textarea type="text" placeholder="DESCRIPTION">
+    <form @submit.prevent="createBoard">
+    <input placeholder="TITLE" v-model="boardTitle">
+    <input type="text" placeholder="DESCRIPTION" v-model="boardDescription">
     <button @click="createBoard">Add Board</button>
     </form>
   
@@ -18,6 +18,12 @@
 <script>
 export default {
   name: 'boards',
+  data(){
+    return {
+    boardTitle: '',
+    boardDescription: ''
+    }
+  },
   mounted(){
     this.$root.$data.store.actions.getBoards()
   },
@@ -29,10 +35,13 @@ export default {
   methods:{
     createBoard(){
       this.$root.$data.store.actions.createBoard({
-        name: 'Testing board creation',
-        description: 'blarg'
+        name: this.boardTitle,
+        description: this.boardDescription
+        
       })
-     
+      this.boardTitle = '',
+      this.boardDescription = ''
+    
      
   
     },
@@ -50,15 +59,11 @@ export default {
     font-weight: normal;
   }
   
-  ul {
-  
-    list-style-type: none;
-    padding: 0;
-  }
+
   
   li {
     display: inline-block;
-    margin: 0 10px;
+    padding: 20px;
   }
   
   a {
