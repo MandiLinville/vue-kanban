@@ -12,12 +12,12 @@
 
     <ul>
       <li class="card" v-for="list in lists"><span class="flexcontainer" @click="setActiveList(list)">{{list.name}}</span>
-
-  <div v-for="card in cards">
     <form @submit.prevent="createCard">
       <input placeholder="TITLE" v-model="cardTitle">
       <button>Add card</button>
     </form>
+
+  <div v-for="card in cards">
           
           
           <div v-if="card.listId == list._id" >{{ card.name}}</div></div><span @click="removeList(list)">x</span>
@@ -53,7 +53,7 @@
         return this.$root.$data.store.state.activeLists
       },
       cards(){
-        return this.$root.$data.store.state.activeCards
+        return this.$root.$data.store.state.activeLists.cards
       }
     },
     methods: {

@@ -10,7 +10,7 @@ var schema = new mongoose.Schema({
 	// Relations
 	
 	boardId: { type: ObjectId, ref: models.board, required: true },
-	cards: {type: ObjectId, ref: 'Card'}
+	cards: [{type: ObjectId, ref: 'Card'}]
 });
 
 module.exports = mongoose.model(models.list.name, schema);

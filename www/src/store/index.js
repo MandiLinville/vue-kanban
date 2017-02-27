@@ -3,7 +3,7 @@ import axios from 'axios'
 let api = axios.create({
     baseURL: 'http://localhost:3000/api/',
     withCredentials: true,
-    timeout: 2000
+    timeout: 20000
 
 })
 
@@ -105,15 +105,15 @@ export default {
                     // state.activeCards = res.data.data
                     let cards = res.data.data
                     let activeList =
-                     state.activeLists.filter(list=>{
+                     state.activeLists.find(list=>{
                          if (id === list._id){
                              return list
                          }
                         })
                         console.log('ACTIVE LIST => ', activeList)
-                    })
                     cards.forEach(card => {
-                        activeList.push(card)
+                        activeList.cards.push(card)
+                    })
                 })        
                     console.log(state.activeLists)
                 },
