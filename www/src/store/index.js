@@ -3,7 +3,7 @@ import axios from 'axios'
 let api = axios.create({
     baseURL: 'http://localhost:3000/api/',
     withCredentials: true,
-    timeout: 200000
+    timeout: 2000
 
 })
 
@@ -15,7 +15,7 @@ api.post('http://localhost:3000/login', {
 
 //register all data here
 let state = {
-    boards: [{ name: 'this is crap' }],
+    boards: [{ name: 'this is nothing' }],
     activeBoard: {},
     error: {},
     activeLists: [],
@@ -47,10 +47,10 @@ export default {
                 .then(res => {
                     state.activeBoard = res.data.data
                     vm.getLists(id)
-                   
+
                 })
-                
-              
+
+
                 .catch(handleError)
         },
         createBoard(board) {
@@ -85,7 +85,7 @@ export default {
             api.post('lists', list)
                 .then(res => {
                     this.getLists(boardId)
-           
+
                 })
                 .catch(handleError)
         },
@@ -96,21 +96,42 @@ export default {
                 })
                 .catch(handleError)
         },
+
         getCards(id) {
+            let vm = this
             api('lists/' + id + '/cards')
                 .then(res => {
-                    state.activeCards.push(res.data.data)
-                    console.log(res.data.data)
-                })
-        },
+                    debugger
+                    // state.activeCards = res.data.data
+                    let cards = res.data.data
+                    let activeList =
+                     state.activeLists.filter(list=>{
+                         if (id === list._id){
+                             return list
+                         }
+                        })
+                        console.log('ACTIVE LIST => ', activeList)
+                    })
+                    cards.forEach(card => {
+                        activeList.push(card)
+                })        
+                    console.log(state.activeLists)
+                },
 
-        createCard(card, boardId) {
+        // getCards(id) {
+        //     api('lists/' + id + '/cards')
+        //         .then(res => {
+        //             state.activeCards.push(res.data.data)
+        //             console.log(res.data.data)
+        //         })
+        // },
+
+        createCard(card, listId) {
+            debugger
             api.post('cards/', card)
-                .then(res => {
-                    this.getLists(boardId)
-                    // debugger 
-                }).then(()=>{
+            .then(() => {
                     this.getCards(card.listId)
+                    debugger
                 })
                 .catch(handleError)
         },

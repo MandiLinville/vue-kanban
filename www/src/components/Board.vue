@@ -8,16 +8,20 @@
     </form>
 
 
+
+
+    <ul>
+      <li class="card" v-for="list in lists"><span class="flexcontainer" @click="setActiveList(list)">{{list.name}}</span>
+
+  <div v-for="card in cards">
     <form @submit.prevent="createCard">
       <input placeholder="TITLE" v-model="cardTitle">
       <button>Add card</button>
     </form>
-
-
-    <ul>
-      <li class="card" v-for="list in lists"><span @click="setActiveList(list)">{{list.name}}</span>
-
-        <div v-for="card in cards"><div v-if="card.listId == list._id" >{{ card.name}}</div></div><span @click="removeList(list)">x</span>
+          
+          
+          <div v-if="card.listId == list._id" >{{ card.name}}</div></div><span @click="removeList(list)">x</span>
+       
         </li>
     </ul>
 
@@ -59,7 +63,6 @@
           description: this.listDescription,
           boardId: this.$route.params.id
         }, this.$route.params.id)
-        this.showListForm = false
         this.listTitle = ''
         this.listDescription = ''
       },
@@ -70,8 +73,7 @@
         this.$root.$data.store.actions.createCard({
           name: this.cardTitle,
           listId: this.activeListId
-        }, this.$route.params.id)
-        this.showListForm = false
+        }, this.activeListId)
         this.cardTitle = ''
   
       },
@@ -80,6 +82,7 @@
       },
       setActiveList: function(list){
         this.activeListId = list._id
+        console.log(this.activeListId)
         Materialize.toast('selected list ' + list.name, 1000)
       }
     }
@@ -91,4 +94,6 @@ li {
   display: inline-block;
   padding: 20px;
 }
+
+
 </style>

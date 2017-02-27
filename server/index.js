@@ -10,8 +10,8 @@ let connection = mongoose.connection;
 
 // Establishes MongoDb Connection
 mongoose.connect(process.env.CONNECTIONSTRING, {
-	server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-	replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }
+	server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 3000} },
+	replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 3000 } }
 });
 
 connection.on('error', console.error.bind(console, 'connection error:'));
